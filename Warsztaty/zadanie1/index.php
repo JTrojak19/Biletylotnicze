@@ -16,5 +16,5 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $name = $_POST['imie']; 
-    echo "Cześć". $name; 
+    echo "Cześć ". $name; 
 }
