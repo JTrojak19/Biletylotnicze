@@ -26,8 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $number5 = $_POST['number5']; 
     $number6 = $_POST['number6'];
     
+    $random = random_int(1, 49); 
+    
     if ($number1 > 49 || $number2 > 49 || $number3 > 49 || $number4 > 49 || $number5 > 49 || $number6 > 49)
     {
         echo "Liczba z poza zakresu. Wybierz liczbę mniejszą od 49."; 
+    }
+    else 
+    {
+        
     }
 }
