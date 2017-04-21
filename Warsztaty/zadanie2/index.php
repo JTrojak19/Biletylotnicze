@@ -5,7 +5,7 @@
     <body>
         <h1>Symulator Lotto:</h1>
         <p>Wybierz 6 liczb z zakresu 1-49</p>
-        <form>
+        <form action="" method="post">
             <input type="text" name="number1" placeholder="Liczba pierwsza"> <br><br>
             <input type="text" name="number2" placeholder="Liczba druga"> <br> <br>
             <input type="text" name="number3" placeholder="Liczba trzecia"><br><br>
@@ -17,3 +17,12 @@
     </body>
 </html>
 <?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $number1 = $_POST['number1']; 
+    $number2 = $_POST['number2']; 
+    $number3 = $_POST['number3']; 
+    $number4 = $_POST['number4']; 
+    $number5 = $_POST['number5']; 
+    $number6 = $_POST['number6']; 
+}
