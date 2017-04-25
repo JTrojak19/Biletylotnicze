@@ -37,11 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     $random = [$random1, $random2, $random3, $random4, $random5, $random6]; 
     
-    $result = array_diff($numbers, $random); 
+    $result = array_intersect($numbers, $random); 
     
     var_dump($numbers); 
     var_dump($random); 
     var_dump($result); 
-
+    
+    
     
 }
