@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     $result = array_intersect($numbers, $random); 
     
-    var_dump($numbers); 
-    var_dump($random); 
-    var_dump($result); 
+    //var_dump($numbers); 
+    //var_dump($random); 
+    //var_dump($result); 
     
-    
+    echo "Twój wynik to: " . count($result); 
     
 }
