@@ -26,12 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $number5 = $_POST['number5']; 
     $number6 = $_POST['number6'];
     
+    $numbers = [$number1, $number2, $number3, $number4, $number5, $number6]; 
+    
     $random1 = random_int(1, 49); 
     $random2 = random_int(1, 49); 
     $random3 = random_int(1, 49); 
     $random4 = random_int(1, 49); 
     $random5 = random_int(1, 49); 
     $random6 = random_int(1, 49); 
+    
+    $random = [$random1, $random2, $random3, $random4, $random5, $random6]; 
     
     if ($number1 > 49 || $number2 > 49 || $number3 > 49 || $number4 > 49 || $number5 > 49 || $number6 > 49)
     {
@@ -40,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     else 
     {
         echo  "Wylosowane liczby to: " . $random1 . " " . $random2 . " " . $random3 . " " . $random4 . " " . $random5 . " " . $random6; 
+        
+        
     }
 
     
