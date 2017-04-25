@@ -37,16 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     $random = [$random1, $random2, $random3, $random4, $random5, $random6]; 
     
-    if ($number1 > 49 || $number2 > 49 || $number3 > 49 || $number4 > 49 || $number5 > 49 || $number6 > 49)
-    {
-        echo "Liczba z poza zakresu. Wybierz liczbę mniejszą od 49."; 
-    }
-    else 
-    {
-        echo  "Wylosowane liczby to: " . $random1 . " " . $random2 . " " . $random3 . " " . $random4 . " " . $random5 . " " . $random6; 
-        
-        
-    }
+    $result = array_diff($numbers, $random); 
+    
+    var_dump($numbers); 
+    var_dump($random); 
+    var_dump($result); 
 
     
 }
