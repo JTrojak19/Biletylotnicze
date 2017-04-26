@@ -1,13 +1,16 @@
 <?php
-
+$counter = 1; 
 
 if(!isset($_COOKIE['visits']))
 {
-    setcookie("visits", 1, time()+ 31556926); 
     echo "Witaj pierwszy raz na naszej stronie!"; 
+    setcookie("visits",$counter, time()+ 31556926); 
+
 }
 else 
 {
-    $cookie = ++$_COOKIE['visits'];
-    echo "Witaj, odwiedziłeś już nas " . $cookie . " razy. "; 
+    $visits = $_COOKIE['visits']; 
+    $visits++; 
+    setcookie('visits', $visits); 
+    echo "Witaj, odwiedziłeś nas już " . $visits . " razy"; 
 }
