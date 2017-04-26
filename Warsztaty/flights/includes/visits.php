@@ -8,5 +8,6 @@ if(!isset($_COOKIE['visits']))
 }
 else 
 {
-    
+    $cookie = ++$_COOKIE['visits'];
+    echo "Witaj, odwiedziłeś już nas " . $cookie . " razy. "; 
 }
