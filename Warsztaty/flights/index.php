@@ -1,5 +1,6 @@
 <?php
 include "includes/visits.php";
+include "includes/form.php"; 
 ?>
 <!doctype html>
 <html lang="en">
