@@ -37,6 +37,9 @@ include "airports.php";
             <br>
             <br>
             <input type="number" name="length" placeholder="Długość lotu" min="0" step="1">
+            <br>
+            <br>
+            <input type="number" name="price" placeholder="Cena lotu" min="0" step="0.01">
         </form>
     </body>
 </html>
