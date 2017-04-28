@@ -13,6 +13,6 @@ include "includes/airports.php";
     <title>Flights reservations</title>
 </head>
 <body>
-
+    <br>
 </body>
 </html>

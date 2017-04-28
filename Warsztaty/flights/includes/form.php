@@ -7,6 +7,7 @@ include "airports.php";
     </head>
     <body>
         <form action="pdf.php" method="post">
+            <br>
             <select name="departure">
                 <option>
                     Lotnisko wylotu: 
