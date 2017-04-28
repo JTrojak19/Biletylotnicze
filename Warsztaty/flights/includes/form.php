@@ -31,6 +31,10 @@ include "airports.php";
                 }
                 ?>
             </select>
+            <br>
+            <br>
+            <input type="datetime-local" name="localdeparturetime" placeholder="Czas wylotu w czasie lokalnym lotniska" size="40">
+            
         </form>
     </body>
 </html>
