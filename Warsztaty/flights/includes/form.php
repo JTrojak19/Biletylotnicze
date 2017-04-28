@@ -40,6 +40,9 @@ include "airports.php";
             <br>
             <br>
             <input type="number" name="price" placeholder="Cena lotu" min="0" step="0.01">
+            <br>
+            <br>
+            <input type="submit" value="Zarezerwuj lot">
         </form>
     </body>
 </html>
