@@ -34,7 +34,9 @@ include "airports.php";
             <br>
             <br>
             <input type="datetime-local" name="localdeparturetime" placeholder="Czas wylotu w czasie lokalnym lotniska" size="40">
-            
+            <br>
+            <br>
+            <input type="number" name="length" placeholder="Długość lotu" min="0" step="1">
         </form>
     </body>
 </html>
