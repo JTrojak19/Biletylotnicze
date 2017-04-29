@@ -11,12 +11,15 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
         $arrival = $_POST['arrival']; 
     }
     
-    if (!isset($_POST['localdeparturetime']))
+    if (!isset($_POST['localdeparturetime']) && !isset($_POST['length']))
     {
         echo "Podaj datę i czas."; 
     }
     else 
     {
         $localtime = $_POST['localdeparturetime']; 
+        $length = $_POST['length']; 
     }
+    
+    if ($_POST['price'])
 }
