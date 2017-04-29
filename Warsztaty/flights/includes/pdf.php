@@ -10,4 +10,13 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
         $departure = $_POST['departure']; 
         $arrival = $_POST['arrival']; 
     }
+    
+    if (!isset($_POST['localdeparturetime']))
+    {
+        echo "Podaj datę i czas."; 
+    }
+    else 
+    {
+        $localtime = $_POST['localdeparturetime']; 
+    }
 }
