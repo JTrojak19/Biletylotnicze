@@ -21,5 +21,12 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
         $length = $_POST['length']; 
     }
     
-    if ($_POST['price'])
+    if ($_POST['price'] < 0)
+    {
+        echo "Cena musi być większa od zera."; 
+    }
+    else 
+    {
+        $price = $_POST['price']; 
+    }
 }
