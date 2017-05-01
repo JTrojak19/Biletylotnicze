@@ -29,4 +29,6 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     {
         $price = $_POST['price']; 
     }
+    
+    
 }
