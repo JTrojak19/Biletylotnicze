@@ -34,6 +34,9 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $timezone_departure = new DateTimeZone($airports['departure']['timezone']); 
     $timezone_arrival = new DateTimeZone($airports['arrival']['timezone']); 
     
+    $code_departure = $airports[$_POST['departure']['code']]; 
+    $code_arrival = $airports[$_POST['arrival']['code']]; 
+    
     $date_departure = new DateTime(); 
     $date_departure->setTimezone($timezone_departure); 
     $date_departure->modify($localtime); 
@@ -44,3 +47,23 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $date_arrival->modify($localtime. '+'.$length . "hours"); 
     $date2 = $date_arrival->format('d.m.Y H:i:s'); 
 }
+
+?>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <table>
+            <tr>
+            <th colspan="3">Lotnisko wylotu:</th>
+            <th colspan="3">Lotnisko przylotu:</th>
+            </tr>
+            <?php
+            echo '<tr>
+                
+             </tr>'
+            ;?>
+        </table>
+    </body>
+</html>
