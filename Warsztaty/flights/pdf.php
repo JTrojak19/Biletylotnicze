@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
             </tr>
             <?php
             echo '<tr>
-                
+                <td>'.$departure.'</td>
+                <td>'.$date1.'</td>
+                <td>'.$code_departure.'</td>
              </tr>'
             ;?>
         </table>
