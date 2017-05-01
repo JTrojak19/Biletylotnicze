@@ -1,5 +1,7 @@
 <?php
+require_once './vendor/autoload.php';
 include "includes/airports.php"; 
+
 
 if ($_SERVER['REQUEST METHOD'] == 'POST')
 {
@@ -46,6 +48,10 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $date_arrival->setTimezone($timezone_arrival); 
     $date_arrival->modify($localtime. '+'.$length . "hours"); 
     $date2 = $date_arrival->format('d.m.Y H:i:s'); 
+    
+    $faker = Faker\Factory::create(); 
+    
+    $name = $faker->name; 
 }
 
 ?>
@@ -55,6 +61,14 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     </head>
     <body>
         <table>
+            <tr>
+                <th colspan='3'>Imię i nazwisko pasażera:</th>
+                <?php
+                echo '<tr>
+                    <td>'.$name.'</td>
+                </tr>'
+                ?>
+            </tr>
             <tr>
             <th colspan="3">Lotnisko wylotu:</th>
             <th colspan="3">Lotnisko przylotu:</th>
