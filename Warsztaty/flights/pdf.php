@@ -34,5 +34,10 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $timezone_departure = new DateTimeZone($airports['departure']['timezone']); 
     $timezone_arrival = new DateTimeZone($airports['arrival']['timezone']); 
     
+    $date_departure = new DateTime(); 
+    $date_departure->setTimezone($timezone_departure); 
+    $date_departure->modify($localtime); 
+    $date1 = $date_departure->format('d.m.Y H:i:s'); 
+    
     
 }
