@@ -1,4 +1,6 @@
 <?php
+include "includes/airports.php"; 
+
 if ($_SERVER['REQUEST METHOD'] == 'POST')
 {
     if ($_POST['departure'] == $_POST['arrival'])
@@ -7,8 +9,8 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     }
     else 
     {
-        $departure = $_POST['departure']; 
-        $arrival = $_POST['arrival']; 
+        $departure = $airports[$_POST['departure']['name']]; 
+        $arrival = $airports[$_POST['arrival']['name']]; 
     }
     
     if (!isset($_POST['localdeparturetime']) && !isset($_POST['length']))
@@ -29,6 +31,8 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     {
         $price = $_POST['price']; 
     }
+    $timezone_departure = new DateTimeZone($airports['departure']['timezone']); 
+    $timezone_arrival = new DateTimeZone($airports['arrival']['timezone']); 
     
     
 }
