@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     
     $numberToWords = new NumberToWords(); 
     $currencyTransformer = $numberToWords->getCurrencyTransformer('pl'); 
-    $currencyTransformer->toWords($price, 'PLN'); 
+    $price_words = $currencyTransformer->toWords($price, 'PLN'); 
 }
 
 ?>
@@ -90,10 +90,12 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
             ;?>
             <th colspan='3'>Czas lotu:</th>
             <th colspan='2'>Cena lotu:</th>
+            <th colspan="3">Cena lotu słownie:</th>
             <?php
             '<tr>
                 <td>'.$length.'</td>
                 <td>'.$price.'</td>
+                <td>'.$price_words.'</td>
              </tr>'
             ?>
         </table>
