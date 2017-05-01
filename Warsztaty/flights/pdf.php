@@ -64,8 +64,19 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
                 <td>'.$departure.'</td>
                 <td>'.$date1.'</td>
                 <td>'.$code_departure.'</td>
+                <td>'.$arrival.'</td>
+                <td>'.$date2.'</td>
+                <td>'.$code_arrival.'</td>
              </tr>'
             ;?>
+            <th colspan='3'>Czas lotu:</th>
+            <th colspan='2'>Cena lotu:</th>
+            <?php
+            '<tr>
+                <td>'.$length.'</td>
+                <td>'.$price.'</td>
+             </tr>'
+            ?>
         </table>
     </body>
 </html>
