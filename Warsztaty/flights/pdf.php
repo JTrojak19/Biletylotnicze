@@ -4,6 +4,8 @@ include "includes/airports.php";
 
 use NumberToWords\NumberToWords;
 
+ob_start(); 
+
 if ($_SERVER['REQUEST METHOD'] == 'POST')
 {
     if ($_POST['departure'] == $_POST['arrival'])
@@ -101,3 +103,12 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
         </table>
     </body>
 </html>
+
+<?php
+
+$mpdf = new mPDF();
+$output = file_get_contents('pdf.php'); 
+$output = ob_get_flush(); 
+$mdf->WriteHTML($output); 
+$mdf->Output('pdf.php', 'D'); 
+?>
