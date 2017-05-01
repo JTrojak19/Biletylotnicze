@@ -39,5 +39,8 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $date_departure->modify($localtime); 
     $date1 = $date_departure->format('d.m.Y H:i:s'); 
     
-    
+    $date_arrival = new DateTime(); 
+    $date_arrival->setTimezone($timezone_arrival); 
+    $date_arrival->modify($localtime. '+'.$length . "hours"); 
+    $date2 = $date_arrival->format('d.m.Y H:i:s'); 
 }
