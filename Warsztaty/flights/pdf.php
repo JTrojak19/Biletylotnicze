@@ -53,6 +53,10 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     $faker = Faker\Factory::create(); 
     
     $name = $faker->name; 
+    
+    $numberToWords = new NumberToWords(); 
+    $currencyTransformer = $numberToWords->getCurrencyTransformer('pl'); 
+    $currencyTransformer->toWords($price, 'PLN'); 
 }
 
 ?>
