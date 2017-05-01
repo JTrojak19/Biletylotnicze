@@ -4,9 +4,9 @@ include "includes/airports.php";
 
 use NumberToWords\NumberToWords;
 
-ob_start(); 
+ 
 
-if ($_SERVER['REQUEST METHOD'] == 'POST')
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if ($_POST['departure'] == $_POST['arrival'])
     {
@@ -14,8 +14,28 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     }
     else 
     {
-        $departure = $airports[$_POST['departure']['name']]; 
-        $arrival = $airports[$_POST['arrival']['name']]; 
+        $departure = $_POST['departure']; 
+        $arrival = $_POST['arrival']; 
+        
+        if (isset($departure) && isset($arrival))
+        {
+            foreach ($airports as $key=>$value)
+            {
+                foreach ($value as $airport)
+                {
+                    if ($airport == $departure)
+                    {
+                        $timezone_departure = $value['timezone']; 
+                        $code_departure = $value['code']; 
+                    }
+                    else 
+                    {
+                        $timezone_arrival = $value['timezone']; 
+                        $code_arrival = $value['code']; 
+                    }
+                }
+            }
+        }
     }
     
     if (!isset($_POST['localdeparturetime']) && !isset($_POST['length']))
@@ -36,19 +56,16 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     {
         $price = $_POST['price']; 
     }
-    $timezone_departure = new DateTimeZone($airports['departure']['timezone']); 
-    $timezone_arrival = new DateTimeZone($airports['arrival']['timezone']); 
-    
-    $code_departure = $airports[$_POST['departure']['code']]; 
-    $code_arrival = $airports[$_POST['arrival']['code']]; 
+    $timezone_1 = new DateTimeZone($timezone_departure); 
+    $timezone_2 = new DateTimeZone($timezone_arrival); 
     
     $date_departure = new DateTime(); 
-    $date_departure->setTimezone($timezone_departure); 
+    $date_departure->setTimezone($timezone_1); 
     $date_departure->modify($localtime); 
     $date1 = $date_departure->format('d.m.Y H:i:s'); 
     
     $date_arrival = new DateTime(); 
-    $date_arrival->setTimezone($timezone_arrival); 
+    $date_arrival->setTimezone($timezone_2); 
     $date_arrival->modify($localtime. '+'.$length . "hours"); 
     $date2 = $date_arrival->format('d.m.Y H:i:s'); 
     
@@ -58,10 +75,10 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     
     $numberToWords = new NumberToWords(); 
     $currencyTransformer = $numberToWords->getCurrencyTransformer('pl'); 
-    $price_words = $currencyTransformer->toWords($price, 'PLN'); 
+    $price_words = $currencyTransformer->toWords($price*100, 'PLN'); 
 }
 
-?>
+$output="
 <html>
     <head>
         
@@ -69,46 +86,44 @@ if ($_SERVER['REQUEST METHOD'] == 'POST')
     <body>
         <table>
             <tr>
-                <th colspan='3'>Imię i nazwisko pasażera:</th>
+                <th>Imię i nazwisko pasażera:</th>
                 <?php
                 echo '<tr>
-                    <td>'.$name.'</td>
+                    <td> $name</td>
                 </tr>'
                 ?>
             </tr>
             <tr>
-            <th colspan="3">Lotnisko wylotu:</th>
-            <th colspan="3">Lotnisko przylotu:</th>
+            <th>Lotnisko wylotu:</th>
+            <th>Lotnisko przylotu:</th>
             </tr>
             <?php
             echo '<tr>
-                <td>'.$departure.'</td>
-                <td>'.$date1.'</td>
-                <td>'.$code_departure.'</td>
-                <td>'.$arrival.'</td>
-                <td>'.$date2.'</td>
-                <td>'.$code_arrival.'</td>
+                <td>$departure</td>
+                <td>$date1</td>
+                <td>$code_departure</td>
+                <td>$arrival</td>
+                <td>$date2</td>
+                <td>$code_arrival</td>
              </tr>'
             ;?>
-            <th colspan='3'>Czas lotu:</th>
-            <th colspan='2'>Cena lotu:</th>
-            <th colspan="3">Cena lotu słownie:</th>
+            <th>Czas lotu:</th>
+            <th>Cena lotu:</th>
+            <th>Cena lotu słownie:</th>
             <?php
             '<tr>
-                <td>'.$length.'</td>
-                <td>'.$price.'</td>
-                <td>'.$price_words.'</td>
+                <td>$length</td>
+                <td>$price</td>
+                <td>$price_words</td>
              </tr>'
             ?>
         </table>
     </body>
-</html>
+</html>";
 
-<?php
+echo $output; 
 
-$mpdf = new mPDF();
-$output = file_get_contents('pdf.php'); 
-$output = ob_get_flush(); 
-$mdf->WriteHTML($output); 
-$mdf->Output('pdf.php', 'D'); 
+$mpdf = new mPDF(); 
+$mpdf->WriteHTML($output); 
+$mpdf->Output('ticket.pdf', 'D'); 
 ?>
