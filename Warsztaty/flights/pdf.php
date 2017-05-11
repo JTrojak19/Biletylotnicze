@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 $output="
+<!DOCTYPE html>
 <html>
     <head>
         
@@ -86,16 +87,16 @@ $output="
     <body>
         <table>
             <tr>
-                <th>Imię i nazwisko pasażera:</th>
+                <td>Imię i nazwisko pasażera:</td>
                 <?php
                 echo '<tr>
-                    <td> $name</td>
+                    <td>$name</td>
                 </tr>'
                 ?>
             </tr>
             <tr>
-            <th>Lotnisko wylotu:</th>
-            <th>Lotnisko przylotu:</th>
+            <td colspan='2'>Lotnisko wylotu:</td>
+            <td colspan='4'>Lotnisko przylotu:</td>
             </tr>
             <?php
             echo '<tr>
@@ -107,9 +108,11 @@ $output="
                 <td>$code_arrival</td>
              </tr>'
             ;?>
-            <th>Czas lotu:</th>
-            <th>Cena lotu:</th>
-            <th>Cena lotu słownie:</th>
+            <tr>
+            <td>Czas lotu:</td>
+            <td>Cena lotu:</td>
+            <td>Cena lotu słownie:</td>
+            </tr>
             <?php
             '<tr>
                 <td>$length</td>
